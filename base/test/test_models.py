@@ -6,10 +6,7 @@ from datetime import datetime
 from .helpers import Helper
 
 
-""" I will only test the function or logic made by us, not by the framework. The test will be focused on 
-overridden function, custom function, etc. I dont check properties of field or database, such as max_length, on_delete relationship, etc,  unless 
-they are decided to become application mandatory spec. 
-"""
+
 
 
 class TalentTestCase(TestCase): 
@@ -130,6 +127,7 @@ class ReviewTestCase(TestCase):
         fifty_string = self.helper.generate_sequential_string(50)
         review1 = Review.objects.get(id=1)
         self.assertEqual(str(review1),fifty_string)
+    
 
     
     

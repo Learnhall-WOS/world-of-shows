@@ -113,10 +113,25 @@ class TestRegisterPage(TestCase):
     def test_redirected_page_after_register(self): 
         #setup_data 
         response = self.client.post(self.register_url,self.postdata)   
-             
+
         #test 
         self.assertAlmostEqual(response.status_code, 302)
         self.assertEqual(response.url,self.home_url)
+    
+    def test_too_similar_between_password_and_username(self): 
+        #setup 
+        too_similar_data = self.postdata
+        too_similar_data["username"] = "longusername"
+        too_similar_data["password1"] = "longusername123"
+        too_similar_data["password2"] = "longusername123"
+
+        response = self.client.post(self.register_url,too_similar_data)
+
+        bs = BeautifulSoup(response.content,'html.parser')
+        error_msg = bs.select_one("ul.errorlist li").text
+
+        self.assertEqual(error_msg,"The password is too similar to the username.")
+
 
 
 
