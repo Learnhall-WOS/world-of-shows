@@ -143,3 +143,4 @@ wos\__pycache__\
 *__pycache__*
 base/migrations/*
 db.sqlite3
+update_talents.py
