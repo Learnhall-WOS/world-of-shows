@@ -5,13 +5,10 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserCreationForm 
-from django import forms
-
 
 from .models import Show, Genre, Talent, Theater
 from dataclasses import dataclass
-from .forms import ShowForm
+from .forms import ShowForm, RoleChoiceForm
 
 # class to save all global variables
 @dataclass
@@ -19,13 +16,6 @@ class G:
     shows = Show.objects
     genres = Genre.objects
 
-class RoleChoiceForm(UserCreationForm):
-    role_choices = [('T', 'Theater'), ('A', 'Talent'), ('O', 'Other')]
-    role = forms.ChoiceField(choices=role_choices, label='Role')
-
-    class Meta:
-        model = User
-        fields = ['username', 'password1', 'password2', 'role']
 
 # Create your views here.
 
