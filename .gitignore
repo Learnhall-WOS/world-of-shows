@@ -26,7 +26,7 @@ Temporary Items
 *.pyc
 __pycache__
 local_settings.py
-# db.sqlite3 # (if you use sqlite3)
+db.sqlite3
 
 # Backup files #
 *.bak
