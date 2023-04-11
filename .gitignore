@@ -142,3 +142,4 @@ base\migrations\__pycache__\
 wos\__pycache__\
 *__pycache__*
 base/migrations/*
+db.sqlite3
