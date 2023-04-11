@@ -1,9 +1,29 @@
-{% extends 'main.html' %}
+{% extends 'main.html' %} {% block content%}
 
-{% block content%}
+<style>
+  .show-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+  }
+</style>
 
-<h1> {{show.name}} </h1>
-<p> {{show.description}} </p>
+<div class="show-container">
+  <div>
+    <h1>{{show.name}}</h1>
+    <p>{{show.description}}</p>
+  </div>
 
+  <div>
+    <h3>Cast</h3>
+
+    {% for member in cast %}
+    <div>
+        <a href="{% url 'user-profile' member.id %}">{{ member.name }}</a>
+        
+    </div>
+    {% endfor %}
+
+  </div>
+</div>
 
 {% endblock %}
