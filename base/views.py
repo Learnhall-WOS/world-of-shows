@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.db.models import Q
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -15,6 +15,9 @@ from .forms import ShowForm, RoleChoiceForm
 class G:
     shows = Show.objects
     genres = Genre.objects
+    users = User.objects
+    theaters = Theater.objects
+    talents = Talent.objects
 
 
 # Create your views here.
@@ -73,6 +76,20 @@ def logout_user(request):
     logout(request)
     return redirect('home')
 
+    
+def user_profile(request, pk):
+    theater = G.users.get(id=pk)
+    
+    # print(f'user: {user}')
+    theater_shows = G.shows.filter(host__user=theater) # all shows associated with this user
+    genres = G.genres.all()
+
+    context = {'user': theater, 'shows': theater_shows,
+               'genres': genres}
+
+    return render(request, 'base/profile.html', context)
+
+    
 
 def home(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
@@ -85,13 +102,17 @@ def home(request):
     shows_count = shows.count()    
     genres = G.genres.all()
     context = {'shows': shows, 'genres': genres, 'shows_count': shows_count}
-    return render(request, 'base/home.html', context)
+    return render(request, 'base/home_shows.html', context)
 
 def shows(request, pk):
     # pk: primary key
     show = G.shows.get(id=pk)
-    context = {'show' : show}
+    cast = show.talent.all()
+
+    context = {'show': show, 'cast': cast}
     return render(request, 'base/show.html', context)
+
+
 
 @login_required(login_url='login')
 def post_show(request):
