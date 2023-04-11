@@ -1,0 +1,25 @@
+<div>
+      
+    {% for show in shows %}
+    <div>
+      <h3>
+        <a href="{% url 'show' show.id %}"> {{show.name}} </a>
+      </h3>
+
+      <a href="{% url 'user-profile' show.host.user.id %}">Theater: @{{show.host}} </a>
+      <br />
+
+      {% if request.user == show.host.user %}
+      <a href="{% url 'update-show' show.id %}">Edit</a>
+      <a href="{% url 'delete-show' show.id %}">Delete</a>
+      {% endif %}
+      <br />
+
+      {% for genre in show.genre.all %}
+      <small>{{ genre.name }}| </small>
+      {% endfor %}
+
+      <hr />
+    </div>
+    {% endfor %}
+  </div>
