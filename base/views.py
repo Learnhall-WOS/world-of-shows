@@ -78,14 +78,19 @@ def logout_user(request):
 
     
 def user_profile(request, pk):
-    # theater = G.users.get(id=pk)
-    talent = G.talents.get(id=pk)
+    user = G.users.get(id=pk)
     
-    # print(f'user: {user}')
-    theater_shows = G.shows.filter(talent=talent) # all shows associated with this user
+    # get all shows associated with this user
+    user_shows = G.shows.filter(
+        # user is a theater
+        Q(host__user=user) |
+        # user is talent
+        Q(talent__user=user)
+        ).distinct() 
+    
     genres = G.genres.all()
 
-    context = {'user': talent, 'shows': theater_shows,
+    context = {'user': user, 'shows': user_shows,
                'genres': genres}
 
     return render(request, 'base/profile.html', context)
