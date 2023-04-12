@@ -21,6 +21,7 @@ class Genre(models.Model):
     
 class Talent(models.Model):
     name = models.CharField(max_length=100)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     # contact = 
     # email =
     
