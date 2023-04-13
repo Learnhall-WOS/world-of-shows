@@ -105,7 +105,8 @@ def home(request):
     shows = G.shows.filter(
         Q(genre__name__icontains=q) |
         Q(name__icontains=q) |
-        Q(description__icontains=q)
+        Q(description__icontains=q) |
+        Q(host__name__icontains=q)
         ).distinct()
 
     shows_count = shows.count()    
