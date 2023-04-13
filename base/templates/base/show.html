@@ -20,11 +20,13 @@
 
     {% for member in cast %}
     <div>
-        <a href="{% url 'user-profile' member.user.id %}">{{ member.name }}</a>
-        
+      {% if member.user.id %}
+      <a href="{% url 'user-profile' member.user.id %}">{{ member.name }}</a>
+      {% else %} 
+      {{ member.name }} 
+      {% endif %}
     </div>
     {% endfor %}
-
   </div>
 </div>
 
