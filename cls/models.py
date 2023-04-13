@@ -36,21 +36,21 @@ class Class(models.Model):
     
     def check_inputs(self,*args,**kwargs):
         """helper method to check inputs from source other than form ( for example : create object from shell ) """
-        if self.id : 
-            instructor_list = self.instructor.all()
+        # if self.id : 
+        #     instructor_list = self.instructor.all()
             
-            for ins in instructor_list : 
-                if not ins.is_instructor: 
-                    self.instructor.clear()             
-                    raise ValidationError("Instructors cannot contain a non Instructor user, the instructor value will be set to Null")              
-        else : 
-            if not self.owner.is_instructor : 
-                raise ValidationError ("owner must be an instructor")
-          
-            if (self.end_date < self.start_date or self.start_date < datetime.now().date()) : 
-                raise ValidationError("You cannot set the end date < start date or start date < today")
-                
-            self.schedule_checker(self.schedule)          
+        #     for ins in instructor_list : 
+        #         if not ins.is_instructor: 
+        #             self.instructor.clear()             
+        #             raise ValidationError("Instructors cannot contain a non Instructor user, the instructor value will be set to Null")              
+        # else : 
+        if not self.owner.is_instructor : 
+            raise ValidationError ("owner must be an instructor")
+        
+        if (self.end_date < self.start_date or self.start_date < datetime.now().date()) : 
+            raise ValidationError("You cannot set the end date < start date or start date < today")
+            
+        self.schedule_checker(self.schedule)          
             
     def save(self, *args, **kwargs): 
         """overridden save method with custom validation to sanitize inputs from non-form source """
