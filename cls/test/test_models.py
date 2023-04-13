@@ -67,7 +67,7 @@ class TestClassTestCase(TestCase):
     def test_instructors_cannot_contain_non_instructor(self): 
         users = ClassUser.objects.filter(id__in=[1,3,4])
   
-        with self.assertRaisesMessage(ValidationError,"['Instructor cannot be a non Instructor user, the instructor value will be set to Null']"):
+        with self.assertRaisesMessage(ValidationError,"['Only can add ClassUser with the property of is_instructor equal to True']"):
             Class.objects.create(
             name="Class two",
             owner=self.good_owner,
