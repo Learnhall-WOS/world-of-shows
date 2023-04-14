@@ -4,13 +4,14 @@ from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 
 # Create your views here.
-def home(request): 
+def home(request):
     classes = Class.objects.all()
     paginator = Paginator(classes,3)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
     context = {
-        'classes':page_obj
+        'classes':classes,
+        'page_obj':page_obj
     }
 
     return render(request,'classes/home.html',context)
