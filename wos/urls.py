@@ -16,7 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from venues import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('base.urls'))
+    path('', include('base.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+
+
+
+    path('venue', views.venue_home, name= 'venue'),
+    path('detail/<str:slug>', views.details, name='detail'),
+    path('createvenue', views.createvenue, name='createvenue'),
+    path('venue_edit/<str:id>', views.venue_edit, name='venue_edit'),
+    path('remove_venue', views.remove_venue, name='remove_venue'),
+
 ]
