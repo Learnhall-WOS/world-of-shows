@@ -1,72 +1,67 @@
-{% extends 'main.html' %} {% block content%}
+{% extends "main_venue.html" %} {% block content%}
 <style>
-  .home-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20rem, 0.05fr));
-  }
+    .home-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 0.05fr));
+    }
 </style>
 
 <div class="home-container">
-  <div>
-    <h3>Browse Genre</h3>
-    <hr />
     <div>
-        <a href="{% url 'venue' %}">All</a>
-    </div>
-
-    <div>         
-      <form action="{% url 'venue' %}" method="POST">
-      {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="">Submit</button>
-      </form>
-    </div>
-  </div>
-
-
-  <div>
-    <h5>{{venue_count}} available venues</h5>
-    <a href="{% url 'createvenue' %}">Post Venue</a>
-    {% if ven %}
-      {% for r in ven.paid %}
-        <a href="{{r}}">Display rented Venue</a>
-      {% endfor %}
-    {% endif %}
-    <br>
-    <div>
-      {% for v in ven %}
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 0.05fr));">
-          <div>
-            <a href="{% url 'detail' v.slug %}">
-              <span style="position: absolute; bottom: 3px;"> Venue {{v.get_choices_display}} </span>
-              <img src="{{v.image.url}}" alt="" height="100" width="100">
-            </a>
-          </div>
-          <div>
-              <h4>
-                  <a href="{% url 'detail' v.slug %}"> {{v.name}} </a> &nbsp;
-              </h4>
-              <h6>
-                  <a href="{% url 'detail' v.slug %}"> {{v.location}} </a> &nbsp;
-              </h6>
-
-              <span>Available from: {{v.start_date|date:"D, M d, Y"}} </span>
-              <br>
-              <small>Fee: {{v.fee}} </small>
-              {% if request.user == v.host.user %}
-                  <form action="{% url 'remove_venue' %}" method="POST">
-                      {% csrf_token %}
-                      <input type="hidden" name="deletevenue" value="{{item.id}}">
-                      <button type="submit">Delete</button>
-                  </form>
-              {% endif %}
-              <hr>
-          </div>
+        <h3>Browse Genre</h3>
+        <hr />
+        <div>
+            <a href="{% url 'venue' %}">All</a>
         </div>
-      {% endfor %}
+
+        <div>
+            <form action="{% url 'venue' %}" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" style=" background: transparent; border: none; text-decoration: underline; ">filter</button>
+            </form>
+        </div>
     </div>
-    
-  </div>
+
+
+    <div>
+        <h5>{{venue_count}} available venues</h5>
+        <a href="{% url 'createvenue' %}">Post Venue</a>
+        <br>
+        <div>
+            {% for v in ven %}
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 0.05fr));">
+                <div>
+                    <a href="{% url 'detail' v.slug %}">
+                        <span style="position: absolute; bottom: 3px;"> Venue {{v.get_choices_display}} </span>
+                        <img src="{{v.image.url}}" alt="" height="100" width="100">
+                    </a>
+                </div>
+                <div>
+                    <h4>
+                        <a href="{% url 'detail' v.slug %}"> {{v.name}} </a> &nbsp;
+                    </h4>
+                    <h6>
+                        <a href="{% url 'detail' v.slug %}"> {{v.location}} </a> &nbsp;
+                    </h6>
+
+                    <span>Available from: {{v.start_date|date:"D, M d, Y"}} </span>
+                    <br>
+                    <small>Fee: {{v.fee}} </small>
+                    {% if request.user == v.host.user %}
+                    <form action="{% url 'remove_venue' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="deletevenue" value="{{item.id}}">
+                        <button type="submit">Delete</button>
+                    </form>
+                    {% endif %}
+                    <hr>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
 </div>
 
 
