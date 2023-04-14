@@ -29,12 +29,13 @@ def register_page(request):
        if form.is_valid():
            user = form.save(commit=False)
            user.username = user.username.lower()
-           user.save()
+           # Save the user object before using it to create related object
+           user.save() 
            # create a theater or talent object based on user's role
            if form.cleaned_data['role'] == 'T':
                Theater.objects.create(user=user, name=user.username)
            elif form.cleaned_data['role'] == 'A':
-               Talent.objects.create(name=user.username)
+               Talent.objects.create(user=user, name=user.username)
 
            login(request, user)
            return redirect('home')
@@ -80,13 +81,15 @@ def logout_user(request):
 def user_profile(request, pk):
     user = G.users.get(id=pk)
     
-    # get all shows associated with this user
-    user_shows = G.shows.filter(
-        # user is a theater
-        Q(host__user=user) |
-        # user is talent
-        Q(talent__user=user)
-        ).distinct() 
+    if hasattr(user, 'theater'):
+        # get all shows associated with this user (as a theater)
+        user_shows = Show.objects.filter(host__user=user).distinct()
+    elif hasattr(user, 'talent'):
+        # get all shows associated with this user (as a cast member)
+        user_shows = Show.objects.filter(cast__user=user).distinct()
+    else:
+        user_shows = []
+    
     
     genres = G.genres.all()
 
@@ -102,7 +105,8 @@ def home(request):
     shows = G.shows.filter(
         Q(genre__name__icontains=q) |
         Q(name__icontains=q) |
-        Q(description__icontains=q)
+        Q(description__icontains=q) |
+        Q(host__name__icontains=q)
         ).distinct()
 
     shows_count = shows.count()    
@@ -113,7 +117,8 @@ def home(request):
 def shows(request, pk):
     # pk: primary key
     show = G.shows.get(id=pk)
-    cast = show.talent.all()
+    cast = show.cast.all()
+    print(f'cast : {cast}')
 
     context = {'show': show, 'cast': cast}
     return render(request, 'base/show.html', context)
