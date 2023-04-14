@@ -24,17 +24,29 @@ def venue_home(request):
     form = FilteringForm(request.POST or None)
     
     if request.method == 'POST':
-         
+        search = request.POST['itemsearch']         
         try:
-            #filtering from venues
-            ven = G.ven.filter(
-                general__name__icontains= form['location'].value(),
-                start_date__range= [ form['start_date'].value(),
-                                    form['end_date'].value()
-                                    ],
-                status__icontains= form['status'].value(),
-            )
+            try:
+                #filtering from venues
+                ven = G.ven.filter(
+                    start_date__range= [ form['start_date'].value(),
+                                        form['end_date'].value()
+                                        ],
+                    status__icontains= form['status'].value(),
+                )
+            except:
+                ven = G.ven.filter(
+                    status__icontains= form['status'].value(),
+                )
+            else:
+                ven = ven
         except:
+            ven=G.ven.filter(
+                Q(general__name__icontains=search) |
+                Q(name__icontains=search) |
+                Q(location__icontains=search)
+            ).distinct()
+        else:
             ven = ven
 
     return render(request, 'venues/venue.html', {'ven': ven,'venue_count':venue_count,'form':form,})
@@ -46,7 +58,7 @@ def details(request, slug):
 
     rent = RequestRentForm(instance= detail)
     if request.method == 'POST':
-        rent = RequestRentForm(request.POST, instance=detail))
+        rent = RequestRentForm(request.POST, instance=detail)
         if rent.is_valid(): 
             rent.save(commit=False)
             c= RequestRent(venue =G.ven.get(slug=slug), 
