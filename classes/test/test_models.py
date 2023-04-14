@@ -1,5 +1,5 @@
 from django.test import TestCase 
-from cls.models import Class,ClassUser
+from classes.models import Class,ClassUser
 from django.contrib.auth.models import User
 from datetime import datetime, timedelta, time
 from django.core.exceptions import ValidationError

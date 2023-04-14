@@ -1,8 +1,8 @@
 from django.apps import AppConfig
 
 
-class ClsConfig(AppConfig):
+class ClassesConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'cls'
+    name = 'classes'
     def ready(self):
-        import cls.signals 
+        import classes.signals 
