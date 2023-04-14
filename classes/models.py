@@ -36,6 +36,9 @@ class Class(models.Model):
     
     def __str__(self) :
         return f"{self.id}--{self.name}"
+    
+    class Meta:
+        ordering = ['id']
         
     # Input Validation of this models are handled by pre_save and m2m_changed signals 
 
