@@ -148,3 +148,6 @@ update_talents.py
 **/migrations/**
 !**/migrations
 !**/migrations/__init__.py
+
+**/classes/uploads**
+**\classes\uploads**
