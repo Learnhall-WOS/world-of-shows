@@ -6,26 +6,19 @@ from .models import Venues, GeneralLocation, RequestRent
 
 class FilteringForm(forms.ModelForm):
     status_list = [('', '----------'), ('F', 'Free'),('P', 'Paid'),]
-    Choices = GeneralLocation.objects.all().values_list('name', 'name')         #to automatically add every created city into the filtering location forms
-    choice_list= []
-    for item in Choices:
-        choice_list.append(item)
-    location = forms.CharField(label='location', widget=forms.Select(
-                       choices= choice_list)
-    )
     start_date = forms.DateField(label='start_date', widget=forms.DateInput(
-                       attrs={'PlaceHolder':'yyy-mm-dd'},)              
+                       attrs={'PlaceHolder':'yyy-mm-dd'}), required= False              
     )
     end_date = forms.DateField(label='end_date', widget=forms.DateInput(
-                       attrs={'PlaceHolder':'yyy-mm-dd'},)              
+                       attrs={'PlaceHolder':'yyy-mm-dd'}), required= False              
     )   
     
     status = forms.CharField(label='status', widget=forms.Select(
-                       choices= status_list )
+                       choices= status_list ), required= False
     )
     class Meta:
         model = Venues
-        fields = ['location','start_date','end_date','status',]
+        fields = ['start_date','end_date','status',]
 
 
 class CreatVenueForm(forms.ModelForm):
