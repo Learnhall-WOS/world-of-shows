@@ -127,9 +127,11 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+environ/
 
 # Visual Studio Code
 .vscode/*
+.vs/
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
@@ -144,3 +146,7 @@ wos\__pycache__\
 base/migrations/*
 db.sqlite3
 update_talents.py
+
+venues/__pycache__/
+venues\migrations\__pycache__\
+venues/migrations/*
