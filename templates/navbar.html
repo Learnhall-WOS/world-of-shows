@@ -2,9 +2,13 @@
     <h1>World of Shows</h1>
 </a>
 
-<form method="GET" action="{% url 'home' %}">
-    <input type="text" name="q" placeholder="Search show, theater...">
-</form>
+<div style="display: flex; direction: flex-row; justify-content: space-between;">
+    <form method="GET" action="{% url 'home' %}">
+        <input type="text" name="q" placeholder="Search show, theater...">
+    </form>
+    <a href="{% url 'classes:home' %}" style="color: red; border:1px solid red ; background-color: yellow; ; text-decoration: none;">Go To Classes</a>
+</div>
+
 
 {% if request.user.is_authenticated %}
 <p>Hello {{request.user}} </p>
