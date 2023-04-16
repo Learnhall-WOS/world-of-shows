@@ -29,7 +29,7 @@
                           </div>
 
                           <p class="card-text">
-                            <a href="#" class="btn btn-primary">Detail</a>
+                            <a href="{% url 'classes:detail' cls.id %}" class="btn btn-primary">Detail</a>
                           </p>
                         </div>
                     </div>
@@ -41,12 +41,12 @@
         <nav aria-label="Page navigation example">
             <ul class="pagination d-flex gap-2">
                 <li class="page-item">
-                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page=1&q={{query}}">&laquo; first</a>
                 </li>
                 <li class="page-item">
                     {% if page_obj.has_previous %}
 
-                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                    <a href="?page={{ page_obj.previous_page_number }}&q={{query}}">previous</a>
                     {% endif %}
                 </li>
                 <li class="page-item">
@@ -54,11 +54,11 @@
                 </li>
                 <li class="page-item">
                     {% if page_obj.has_next %}
-                    <a href="?page={{page_obj.next_page_number}}">next</a>
+                    <a href="?page={{page_obj.next_page_number}}&q={{query}}">next</a>
                     {% endif %}
                 </li>
                 <li class="page-item">
-                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}&q={{query}}">last &raquo;</a>
                 </li>
             </ul>
         </nav>

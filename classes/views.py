@@ -1,12 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from classes.models import Class,ClassUser
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
+from django.db.models import Q
 
 # Create your views here.
 def home(request):
     q=request.GET.get("q")
-    if not q or q == "None" or q=="" :
+    if not q or q=="" or q=="None" :
         classes = Class.objects.all()
     else : 
         classes = Class.objects.filter(
@@ -25,3 +26,10 @@ def home(request):
         'page_obj':page_obj
     }
     return render(request,'classes/home.html',context)
+
+def detail(request,pk):
+    class_detail = get_object_or_404(Class,pk=pk)
+    context = {
+        'class':class_detail
+    }
+    return render(request,'classes/detail.html',context)

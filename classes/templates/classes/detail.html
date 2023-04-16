@@ -1,0 +1,26 @@
+{% extends 'classes/base.html' %}
+
+{% block title%} {{class.name}} {% endblock title %}
+
+{% block content %}
+    <div class="container d-flex justify-content-center">
+        <div class="column">
+            <img src="{{class.image.url}}" alt="">
+            <h2>{{class.name}}</h2>
+            <p>Owner : <span>{{class.owner.user.username}}</span></p>
+            <p>Instructor(s):</p>
+            <ul>
+                {% for ins in class.instructor.all %}
+                    <li><a href="">{{ins.user.username}}</a></li>
+                {% endfor %}
+            </ul>
+            <p>Description:</p>
+            <p>{{class.description}}</p>
+            <p>Date:</p>
+            <p><span>Start : {{class.start_date}}</span><span>, End : {{class.end_date}}</span></p>
+            <p>Schedule:</p>
+            <p><span>{{class.schedule}}</span><span>/{{class.start_time}}-{{class.end_time}}</span></p>
+        </div>
+        
+    </div>
+{% endblock content %}

@@ -4,5 +4,6 @@ from . import views
 app_name = "classes"
 
 urlpatterns = [
-    path('',views.home,name='home')
+    path('',views.home,name='home'), 
+    path('detail/<int:pk>',views.detail, name='detail')
 ]
