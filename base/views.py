@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 
-from .models import Show, Genre, Talent, Theater
+from .models import Show, Genre, Talent, Theater, CastMember
 from dataclasses import dataclass
 from .forms import ShowForm, RoleChoiceForm
 
@@ -18,6 +18,7 @@ class G:
     users = User.objects
     theaters = Theater.objects
     talents = Talent.objects
+    cast_members = CastMember.objects
 
 
 # Create your views here.
@@ -80,21 +81,28 @@ def logout_user(request):
     
 def user_profile(request, pk):
     user = G.users.get(id=pk)
+    cast_member = {}
     
     if hasattr(user, 'theater'):
         # get all shows associated with this user (as a theater)
-        user_shows = Show.objects.filter(host__user=user).distinct()
+        user_shows = G.shows.filter(host__user=user).distinct()
     elif hasattr(user, 'talent'):
-        # get all shows associated with this user (as a cast member)
-        user_shows = Show.objects.filter(cast__user=user).distinct()
+        # all entries in the castmembers table associated with this talent
+        cast_member_entries = G.cast_members.filter(talent__user=user)
+        # print(cast_member_entries)
+        # check if the user is a cast member
+        if cast_member_entries.exists():
+            cast_member['entries'] = cast_member_entries
+            
+            user_shows = G.shows.filter(cast__user=user).distinct()
+        
     else:
         user_shows = []
-    
     
     genres = G.genres.all()
 
     context = {'user': user, 'shows': user_shows,
-               'genres': genres}
+               'genres': genres, 'cast_member': cast_member}
 
     return render(request, 'base/profile.html', context)
 
@@ -117,7 +125,7 @@ def home(request):
 def shows(request, pk):
     # pk: primary key
     show = G.shows.get(id=pk)
-    cast = show.cast.all()
+    cast = G.cast_members.filter(show=show)
     print(f'cast : {cast}')
 
     context = {'show': show, 'cast': cast}

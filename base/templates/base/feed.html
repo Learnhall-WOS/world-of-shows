@@ -1,25 +1,37 @@
 <div>
-      
-    {% for show in shows %}
-    <div>
-      <h3>
-        <a href="{% url 'show' show.id %}"> {{show.name}} </a>
-      </h3>
+  {% for show in shows %}
+  <div>
+    <h3>
+      <a href="{% url 'show' show.id %}"> {{show.name}} </a>
+    </h3>
 
-      <a href="{% url 'user-profile' show.host.user.id %}">Theater: @{{show.host}} </a>
-      <br />
+    <a href="{% url 'user-profile' show.host.user.id %}"
+      >Theater: @{{show.host}}
+    </a>
+    <br />
 
-      {% if request.user == show.host.user %}
-      <a href="{% url 'update-show' show.id %}">Edit</a>
-      <a href="{% url 'delete-show' show.id %}">Delete</a>
-      {% endif %}
-      <br />
+    {% if request.user == show.host.user %}
+    <a href="{% url 'update-show' show.id %}">Edit</a>
+    <a href="{% url 'delete-show' show.id %}">Delete</a>
+    {% endif %}
+    <br />
 
-      {% for genre in show.genre.all %}
-      <small>{{ genre.name }}| </small>
-      {% endfor %}
+    {% for genre in show.genre.all %}
+    <small>{{ genre.name }}| </small>
+    {% endfor %} 
 
-      <hr />
-    </div>
+    {% if cast_member %}
+    {% for entry in cast_member.entries %}
+    {% if entry.show.id == show.id %}
+    <p><strong>Role:</strong> {{entry.role}}</p>
+    {% if entry.role_description %}
+    <p><strong>Role Description:</strong> {{entry.role_description}}</p>
+    {% endif %}
+    {% endif %}
     {% endfor %}
+    {% endif %}
+
+    <hr />
   </div>
+  {% endfor %}
+</div>
