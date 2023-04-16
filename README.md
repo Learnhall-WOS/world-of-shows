@@ -1,3 +1,24 @@
+## Prerequisites
+- Docker: Make sure Docker is installed on your machine. You can download it from the official Docker website: https://www.docker.com/get-started
+- Docker Compose: Make sure Docker Compose is installed on your machine. You can download it from the official Docker website: https://docs.docker.com/compose/install/
+
+## Getting Started
+1. Clone the repository to your local machine.
+2. Navigate to the root directory of the project in a terminal or command prompt.
+3. Build the Docker image by running the following command:
+    ```
+    docker build -t wos .
+    ```
+4. Start the Docker containers by running the following command:
+    ```
+    docker-compose up
+    ```
+5. Navigate to `http://localhost:8000` in a web browser to view the Django application.
+
+## Additional Notes
+- If you make changes to the code, you will need to rebuild the Docker image and restart the containers for the changes to take effect.
+- To stop the Docker containers, press `Ctrl-C` in the terminal or command prompt where the containers are running. To remove the containers, use the `docker-compose down` command.
+
 # Models (base\models.py)
 
 This Django project has five models:
