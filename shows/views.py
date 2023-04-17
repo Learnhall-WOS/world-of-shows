@@ -44,7 +44,7 @@ def register_page(request):
            messages.error(request, 'An error occurred during registration.')
 
     context = {'form': form}
-    return render(request, 'base/login_register.html', context)
+    return render(request, 'shows/login_register.html', context)
 
 def login_page(request):
     page = 'login'
@@ -72,7 +72,7 @@ def login_page(request):
             print("Password does not match the username")
 
     context = {'page': page}
-    return render(request, 'base/login_register.html', context)
+    return render(request, 'shows/login_register.html', context)
 
 def logout_user(request):
     logout(request)
@@ -104,7 +104,7 @@ def user_profile(request, pk):
     context = {'user': user, 'shows': user_shows,
                'genres': genres, 'cast_member': cast_member}
 
-    return render(request, 'base/profile.html', context)
+    return render(request, 'shows/profile.html', context)
 
     
 
@@ -120,7 +120,7 @@ def home(request):
     shows_count = shows.count()    
     genres = G.genres.all()
     context = {'shows': shows, 'genres': genres, 'shows_count': shows_count}
-    return render(request, 'base/home_shows.html', context)
+    return render(request, 'shows/home_shows.html', context)
 
 def shows(request, pk):
     # pk: primary key
@@ -129,7 +129,7 @@ def shows(request, pk):
     print(f'cast : {cast}')
 
     context = {'show': show, 'cast': cast}
-    return render(request, 'base/show.html', context)
+    return render(request, 'shows/show.html', context)
 
 
 
@@ -148,7 +148,7 @@ def post_show(request):
             return redirect('home')
         
     context = {'form': form}
-    return render(request, 'base/show_form.html', context)
+    return render(request, 'shows/show_form.html', context)
 
 @login_required(login_url='login')
 def update_show(request, pk):
@@ -164,7 +164,7 @@ def update_show(request, pk):
             form.save()
             return redirect('home')
     context = {'form': form}
-    return render(request, 'base/show_form.html', context)
+    return render(request, 'shows/show_form.html', context)
 
 @login_required(login_url='login')
 def delete_show(request, pk):
@@ -177,4 +177,4 @@ def delete_show(request, pk):
         show.delete()
         return redirect('home')
     context = {'obj': show}
-    return render(request, 'base/delete.html', context)
+    return render(request, 'shows/delete.html', context)
