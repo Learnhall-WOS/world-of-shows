@@ -137,10 +137,12 @@ venv.bak/
 .history
 
 # Custom
-base/__pycache__/
-base\migrations\__pycache__\
-wos\__pycache__\
-*__pycache__*
-base/migrations/*
+shows/__pycache__/* 
+wos/__pycache__/*
+shows/migrations/
 db.sqlite3
 update_talents.py
+wos\__pycache__\*
+wos/__pycache__/settings.cpython-38.pyc
+wos/__pycache__/urls.cpython-38.pyc
+
