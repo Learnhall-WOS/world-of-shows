@@ -3,12 +3,15 @@
 {% block content%}
 
 <h1> {{detail.name}} </h1>
-<a href="{% url 'venue_edit' detail.pk %}"> Edit </a>
+<a href="{% url 'venues:venue_edit' detail.pk %}"> Edit </a>
 <p> {{detail.description| safe}} </p>
-<span>Available from: {{detail.start_date|date:"D, M d, Y"}} </span>
+<span>Available from: {{detail.start_date|date:"D, M d, Y"}} </span> </br>
+<span>Capacity: {{detail.capacity}} </span>
 
+<!-- ######################## form for venue request ################################ -->
 <div>
-    <form action="{% url 'detail' detail.slug %}" method="POST">
+    <p> Fill the form to request for this venue </p>
+    <form action="{% url 'venues:detail' detail.slug %}" method="POST">
         {% csrf_token%}
         {{rent.as_p}}
         <input type="submit" value="Request">
