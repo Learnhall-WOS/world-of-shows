@@ -11,11 +11,12 @@
         <h3>Browse Genre</h3>
         <hr />
         <div>
-            <a href="{% url 'venue' %}">All</a>
+            <a href="{% url 'venues:venue' %}">All</a>
         </div>
 
+        <!-- ######################## venue filtering ################################ -->
         <div>
-            <form action="{% url 'venue' %}" method="POST">
+            <form action="{% url 'venues:venue' %}" method="POST">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <button type="submit" style=" background: transparent; border: none; text-decoration: underline; ">filter</button>
@@ -23,33 +24,34 @@
         </div>
     </div>
 
-
+    <!-- ######################## display venues ################################ -->
     <div>
         <h5>{{venue_count}} available venues</h5>
-        <a href="{% url 'createvenue' %}">Post Venue</a>
+        <a href="{% url 'venues:createvenue' %}">Post Venue</a>
         <br>
         <div>
             {% for v in ven %}
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 0.05fr));">
                 <div>
-                    <a href="{% url 'detail' v.slug %}">
-                        <span style="position: absolute; bottom: 3px;"> Venue {{v.get_choices_display}} </span>
+                    <a href="{% url 'venues:detail' v.slug %}">
+                        <span style="position: absolute;"> Venue {{v.get_status_display}} </span>
                         <img src="{{v.image.url}}" alt="" height="100" width="100">
                     </a>
                 </div>
                 <div>
                     <h4>
-                        <a href="{% url 'detail' v.slug %}"> {{v.name}} </a> &nbsp;
+                        <a href="{% url 'venues:detail' v.slug %}"> {{v.name}} </a> &nbsp;
                     </h4>
                     <h6>
-                        <a href="{% url 'detail' v.slug %}"> {{v.location}} </a> &nbsp;
+                        <a href="{% url 'venues:detail' v.slug %}"> {{v.location}} </a> &nbsp;
                     </h6>
 
                     <span>Available from: {{v.start_date|date:"D, M d, Y"}} </span>
                     <br>
-                    <small>Fee: {{v.fee}} </small>
+                    <small>Fee: {{v.fee}}$ </small>
+                    <!-- ######################## delete a specific venue ################################ -->
                     {% if request.user == v.host.user %}
-                    <form action="{% url 'remove_venue' %}" method="POST">
+                    <form action="{% url 'venues:remove_venue' %}" method="POST">
                         {% csrf_token %}
                         <input type="hidden" name="deletevenue" value="{{item.id}}">
                         <button type="submit">Delete</button>
@@ -61,7 +63,31 @@
             {% endfor %}
         </div>
 
+        <!-- ######################## venue pagination ################################ -->
+        <nav aria-label="Page navigation example">
+            <ul class="pagination pt-5 mt-5 justify-content-center">
+
+                {% if ven.has_previous %}
+                    <a class="page-link mi" href="?page={{ven.previous.page_number}}">Previous</a>
+                {% endif %}
+
+                {% for item in ven.paginator.page_range %}
+                    {% if ven.number == item %}
+                       <a class="page-link im" href="?page={{item}}">{{item}}</a>
+                    {% else %}
+                        <a class="page-link im" href="?page={{item}}">{{item}}</a>
+                    {% endif %}
+                {% endfor %}
+
+                {% if ven.has_next %}
+                    <a class="page-link mi" href="?page={{ven.next.page_number}}">Next</a>
+                {% endif %}
+            </ul>
+
+        </nav>
     </div>
+
+
 </div>
 
 
