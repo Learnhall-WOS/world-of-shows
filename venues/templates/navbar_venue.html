@@ -2,9 +2,9 @@
     <h1>World of Shows</h1>
 </a>
 
-<form method="POST" action="{% url 'venue' %}">
+<form method="POST" action="{% url 'venues:venue' %}">
     {% csrf_token %}
-    <input type="text" name="itemsearch" placeholder="Search show, theater..." autocomplete="on">
+    <input type="text" name="itemsearch" placeholder="Search name, location..." autocomplete="on">
 </form>
 
 {% if request.user.is_authenticated %}
