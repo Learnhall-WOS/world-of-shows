@@ -5,6 +5,7 @@ from datetime import datetime, date
 from django.shortcuts import render, redirect
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 
 
 from .models import Venues, GeneralLocation, RequestRent
@@ -19,12 +20,18 @@ class G:
 
 
 def venue_home(request):
-    ven = G.ven.all() 
-    venue_count = ven.count()
+
+    ############ for paginating ############
+    pag= Paginator(G.ven.all(),3)
+    page_number= request.GET.get('page',all)
+    ven=pag.get_page(page_number)
+    ############ paginating end ############
+
+    venue_count = G.ven.all().count()
     form = FilteringForm(request.POST or None)
     
     if request.method == 'POST':
-        search = request.POST['itemsearch']         
+                 
         try:
             try:
                 #filtering from venues
@@ -41,6 +48,8 @@ def venue_home(request):
             else:
                 ven = ven
         except:
+            #searching
+            search = request.POST['itemsearch']
             ven=G.ven.filter(
                 Q(general__name__icontains=search) |
                 Q(name__icontains=search) |
@@ -61,6 +70,7 @@ def details(request, slug):
         rent = RequestRentForm(request.POST, instance=detail)
         if rent.is_valid(): 
             rent.save(commit=False)
+            #transfering the filled form to the db model
             c= RequestRent(venue =G.ven.get(slug=slug), 
                     name=rent.cleaned_data['name'], 
                     email=rent.cleaned_data['email'], start_date=rent.cleaned_data['start_date'], 
