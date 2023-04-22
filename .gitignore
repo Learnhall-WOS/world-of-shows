@@ -145,4 +145,7 @@ update_talents.py
 wos\__pycache__\*
 wos/__pycache__/settings.cpython-38.pyc
 wos/__pycache__/urls.cpython-38.pyc
-
+.vscode/
+base\__pycache__\*
+base\migrations\*
+base/migrations/
