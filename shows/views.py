@@ -6,9 +6,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 
-from .models import Show, Genre, Talent, Theater, CastMember
+from shows.models import Show, Genre, Talent, Theater, CastMember
 from dataclasses import dataclass
-from .forms import ShowForm, RoleChoiceForm
+from shows.forms import ShowForm
 
 # class to save all global variables
 @dataclass
@@ -22,63 +22,6 @@ class G:
 
 
 # Create your views here.
-
-def register_page(request):
-    form = RoleChoiceForm()
-    if request.method == 'POST':
-       form = RoleChoiceForm(request.POST)
-       if form.is_valid():
-           user = form.save(commit=False)
-           user.username = user.username.lower()
-           # Save the user object before using it to create related object
-           user.save() 
-           # create a theater or talent object based on user's role
-           if form.cleaned_data['role'] == 'T':
-               Theater.objects.create(user=user, name=user.username)
-           elif form.cleaned_data['role'] == 'A':
-               Talent.objects.create(user=user, name=user.username)
-
-           login(request, user)
-           return redirect('home')
-       else:
-           messages.error(request, 'An error occurred during registration.')
-
-    context = {'form': form}
-    return render(request, 'shows/login_register.html', context)
-
-def login_page(request):
-    page = 'login'
-
-    if request.user.is_authenticated:
-        return redirect('home')
-
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        print(username)
-        try:
-            user = User.objects.get(username=username)
-            
-        except:
-            messages.error(request, 'User does not exist')
-            print("User does not exist")
-        
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('home')
-        else:
-            messages.error(request, 'Password does not match the username')
-            print("Password does not match the username")
-
-    context = {'page': page}
-    return render(request, 'shows/login_register.html', context)
-
-def logout_user(request):
-    logout(request)
-    return redirect('home')
-
-    
 def user_profile(request, pk):
     user = G.users.get(id=pk)
     cast_member = {}
@@ -106,9 +49,7 @@ def user_profile(request, pk):
 
     return render(request, 'shows/profile.html', context)
 
-    
-
-def home(request):
+def home_shows(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
     shows = G.shows.filter(
         Q(genre__name__icontains=q) |
