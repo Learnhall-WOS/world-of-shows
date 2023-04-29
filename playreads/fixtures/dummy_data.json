@@ -1,0 +1,35 @@
+[
+    {
+        "model": "playreads.play",
+        "pk": 1,
+        "fields": {
+            "play_id": "35057bcd-3dd8-4acc-a716-3eb3d5eb3454",
+            "name": "Hamlet",
+            "author": "William Shakespeare",
+            "genre": "Tragedy",
+            "date_created": "2022-04-01T14:30:00Z"
+        }
+    },
+    {
+        "model": "playreads.play",
+        "pk": 2,
+        "fields": {
+            "play_id": "bf8a9a42-2e24-48b2-8d28-8e22b4c4f83d",
+            "name": "Romeo and Juliet",
+            "author": "William Shakespeare",
+            "genre": "Tragedy",
+            "date_created": "2022-04-01T14:30:00Z"
+        }
+    },
+    {
+        "model": "playreads.play",
+        "pk": 3,
+        "fields": {
+            "play_id": "b7311d3f-4878-4825-b5c5-c5ed50dbf366",
+            "name": "A Midsummer Night's Dream",
+            "author": "William Shakespeare",
+            "genre": "Comedy",
+            "date_created": "2022-04-01T14:30:00Z"
+        }
+    }
+]

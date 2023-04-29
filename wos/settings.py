@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'shows.apps.ShowsConfig',
     'base.apps.BaseConfig',
+    'playreads.apps.PlayreadsConfig'
 ]
 
 MIDDLEWARE = [

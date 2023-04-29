@@ -25,5 +25,6 @@ urlpatterns = [
     path('logout/', logout_user, name='logout'),
     path('register/', register_page, name='register'),
 
-    path('shows/', include('shows.urls'))
+    path('shows/', include('shows.urls')),
+    path('playreads/', include('playreads.urls'))
 ]

@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+
+{% block content %}
+  <h1>Play Reads</h1>
+  <form action="{% url 'home_play_reads' %}" method="get">
+    <input type="text" name="q" placeholder="Search plays...">
+    <button type="submit">Search</button>
+  </form>
+  {% if query %}
+    <p>Showing results for "{{ query }}".</p>
+  {% endif %}
+  <ul>
+    {% for play in plays %}
+      <li>
+        <a href="{% url 'play_detail' play.pk %}">{{ play.name }}</a>
+        by {{ play.author }} ({{ play.genre }})
+      </li>
+    {% empty %}
+      <li>No plays found.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

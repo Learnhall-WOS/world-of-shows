@@ -1,0 +1,16 @@
+{% extends 'main.html' %}
+
+{% block content %}
+  <h1>{{ play.name }}</h1>
+  <p>by {{ play.author }} ({{ play.genre }})</p>
+  <p>{{ play.description }}</p>
+  <h2>Participate in a Play Read</h2>
+  <form action="{% url 'participate' play.pk %}" method="post">
+    {% csrf_token %}
+    <label for="name">Name:</label>
+    <input type="text" name="name" required>
+    <label for="email">Email:</label>
+    <input type="email" name="email" required>
+    <button type="submit">Submit</button>
+  </form>
+{% endblock %}
