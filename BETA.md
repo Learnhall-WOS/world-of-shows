@@ -13,9 +13,9 @@
       - [Find Venues:](#find-venues)
       - [Rent out Venue:](#rent-out-venue)
       - [Find Auditions:](#find-auditions)
-      - [Share Auditions:](#share-auditions)
+      - [Share Audition:](#share-audition)
       - [Find Playreads:](#find-playreads)
-      - [Share Playreads:](#share-playreads)
+      - [Share Playread:](#share-playread)
     - [Scope of the Sign-Up Functionality](#scope-of-the-sign-up-functionality)
     - [Scope of the User Dashboard](#scope-of-the-user-dashboard)
       - [**My Tickets**](#my-tickets)
@@ -138,7 +138,7 @@ The Homepage in the Base app provides users with easy access to various features
 - Action: Clicking the card redirects users to the Auditions app (Auditions front page), where they can view audition listings, roles, requirements, and submit their applications.
 - Images: Image representing the audition process or performers.
 
-#### Share Auditions:
+#### Share Audition:
 - Description: Post auditions to find the best talent for your production.
 - Action: Clicking the card leads users to the Auditions app (Share auditions page), where they can create and manage audition listings, specify roles, and set audition requirements.
 - Images: Image depicting an audition setting or casting process.
@@ -148,7 +148,7 @@ The Homepage in the Base app provides users with easy access to various features
 - Action: Clicking the card leads users to the Playreads app (Playreads front page), where they can browse and search for playreads.
 - Images: Image representing a play or script.
 
-#### Share Playreads:
+#### Share Playread:
 - Description: Share your playread with the community.
 - Action: Clicking the card leads users to the Playreads app (Share playread page)
 - Images: Image representing a play or script.
