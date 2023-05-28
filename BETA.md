@@ -5,6 +5,17 @@
   - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
   - [Base App](#base-app)
+    - [Scope of the Homepage](#scope-of-the-homepage)
+      - [Find Shows:](#find-shows)
+      - [Post Show:](#post-show)
+      - [Take Classes:](#take-classes)
+      - [Share Class:](#share-class)
+      - [Find Venues:](#find-venues)
+      - [Rent out Venue:](#rent-out-venue)
+      - [Find Auditions:](#find-auditions)
+      - [Share Auditions:](#share-auditions)
+      - [Find Playreads:](#find-playreads)
+      - [Share Playreads:](#share-playreads)
     - [Scope of the Sign-Up Functionality](#scope-of-the-sign-up-functionality)
     - [Scope of the User Dashboard](#scope-of-the-user-dashboard)
       - [**My Tickets**](#my-tickets)
@@ -83,9 +94,65 @@ World of Shows is broken down into 6 Django apps:
 ## Base App
 
 This app handles all global functionality.
+- Homepage
 - Sign-up functionality.
 - User Dashboard.
 - Global search.
+
+### Scope of the Homepage
+
+The Homepage in the Base app provides users with easy access to various features and functionalities through interactive cards. Each card represents a specific action or category related to the theater community. The following are the cards available on the Homepage:
+
+#### Find Shows:
+- Description: Discover upcoming shows in the theater community.
+- Action: Clicking the card directs users to the Shows app (Shows front page), where they can browse and search for shows based on different criteria, such as title, genre, location, or date.
+- Images: Show-related image representing a production or performance.
+
+#### Post Show:
+- Description: Share information about your upcoming show or production.
+- Action: Clicking the card leads users to the Shows app (Post show page), where they can create show listings and add details for their productions.
+- Images: Image representing a theater performance or production.
+
+#### Take Classes:
+- Description: Explore classes and workshops for theater enthusiasts.
+- Action: Clicking the card directs users to the Classes app (Classes front page), where they can browse available classes and workshops.
+- Images: Image representing a class or workshop environment.
+
+#### Share Class:
+- Description: Share details about your upcoming class or workshop.
+- Action: Clicking the card leads users to the Classes app (Post class page), where they can create class listings and provide information about the class or workshop.
+- Images: Image representing a class or workshop environment.
+
+#### Find Venues:
+- Description: Discover venues available for hosting performances or events.
+- Action: Clicking the card directs users to the Venues app (Venues front page), where they can explore venue listings, view details, and contact venue owners or managers.
+- Images: Image showcasing a theater or performance venue.
+
+#### Rent out Venue:
+- Description: Rent out and give details about your venue.
+- Action: Clicking the card directs users to the Venues app (Rent venue page).
+- Images: Image representing a venue available for rental.
+
+#### Find Auditions:
+- Description: Find open castings and auditions near you.
+- Action: Clicking the card redirects users to the Auditions app (Auditions front page), where they can view audition listings, roles, requirements, and submit their applications.
+- Images: Image representing the audition process or performers.
+
+#### Share Auditions:
+- Description: Post auditions to find the best talent for your production.
+- Action: Clicking the card leads users to the Auditions app (Share auditions page), where they can create and manage audition listings, specify roles, and set audition requirements.
+- Images: Image depicting an audition setting or casting process.
+
+#### Find Playreads:
+- Description: Discover and explore playreads shared by the theater community.
+- Action: Clicking the card leads users to the Playreads app (Playreads front page), where they can browse and search for playreads.
+- Images: Image representing a play or script.
+
+#### Share Playreads:
+- Description: Share your playread with the community.
+- Action: Clicking the card leads users to the Playreads app (Share playread page)
+- Images: Image representing a play or script.
+
 
 ### Scope of the Sign-Up Functionality
 
