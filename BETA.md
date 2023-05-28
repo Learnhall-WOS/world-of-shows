@@ -129,7 +129,7 @@ The Homepage in the Base app provides users with easy access to various features
 - Images: Image showcasing a theater or performance venue.
 
 #### Rent out Venue:
-- Description: Rent out and give details about your venue.
+- Description: Rent out your venue.
 - Action: Clicking the card directs users to the Venues app (Rent venue page).
 - Images: Image representing a venue available for rental.
 
