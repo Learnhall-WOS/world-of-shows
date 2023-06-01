@@ -317,7 +317,7 @@ The User Dashboard should include the following sections:
    - Provide a brief description of each event and any special highlights or activities.
    - For past events, showcase the event title, date, location, and a summary of the event's success or key takeaways.
 
-##### 4. **Direct Message/Chat:**
+##### 4. **Direct Message/Chat: Will not be part of the Beta release**
 
    - Enable a direct messaging or chat feature for users to communicate with each other.
    - Provide options for users to manage their conversations, such as archiving, deleting, or marking as unread.
