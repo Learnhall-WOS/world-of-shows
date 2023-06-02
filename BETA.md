@@ -181,7 +181,7 @@ The User Dashboard should include the following sections:
 - My Playreads
 - Saved items
 - Profile 
-- Direct Message (part of the user profile) 
+- Direct Message (part of the user profile but will not be in the Beta Version) 
 
 #### **My Tickets**
 - Display a list of tickets related to the user's activities in the theater community.
@@ -273,6 +273,29 @@ The User Dashboard should include the following sections:
 - Provide options to manage the posted playread, edit details, or remove the posting.
 - If there are no posted playreads, display a message saying "You have not posted any playreads."
 
+### Manage Listings pages.
+
+When a user creates a listing, they might want to edit or delete the listing, or view how many people are interested in the listing.
+
+e.g., “how many people have bought tickets to my show”,
+
+“How many people have booked my venue and for when?”,
+
+“Which actors have registered for the audition I posted”,
+
+“Who has shown interest in attending this week's play reading event”,
+
+or “Who has enrolled for my improv class?”
+
+These pages can be the listing’s details pages only with this extra functionality.
+
+1. Manage show page.
+2. Manage audition page.
+3. Manage class page.
+4. Manage venue page.
+5. Manage play read.
+
+These pages will comprise the listings in the dashboard section My Tickets, Venues, Auditions, Classes and My Play reads when the user is the creator of the listing.
 
 
 #### **Profile**
