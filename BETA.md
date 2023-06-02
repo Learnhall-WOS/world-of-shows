@@ -189,6 +189,7 @@ The User Dashboard should include the following sections:
 
 ##### Sold
 - List the tickets sold by the user for their own shows or events.
+- This section will have listings that will point to the manage listing page which is the the same as the details pages only with added managerial functionality.
 - Include details such as the event title, date, time, venue, ticket status eg sold out, and the number of tickets sold.
 - If there are no tickets sold, display a message saying "You have not sold tickets to any shows."
 
@@ -210,6 +211,7 @@ The User Dashboard should include the following sections:
 
 ##### Rented Out
 - Display a list of venues the user has posted for rent.
+- This section will have listings that will point to the manage listing page which is the the same as the details pages only with added managerial functionality.
 - Include details such as the venue name, location, rental period, and any additional information.
 - Provide options to manage rental listings, make changes, or remove listings.
 - If there are no rented out venues, display a message saying "You have not rented out any venues."
@@ -226,6 +228,7 @@ The User Dashboard should include the following sections:
 
 ##### Posted
 - Display a list of classes or workshops posted by the user.
+- This section will have listings that will point to the manage listing page which is the the same as the details pages only with added managerial functionality.
 - Include details such as the class title, instructor, date, time, location, and any additional information.
 - Provide options to manage class listings, make changes, or remove listings.
 - If there are no posted classes, display a message saying "You have not posted any classes."
@@ -248,6 +251,7 @@ The User Dashboard should include the following sections:
 
 ##### Posted
 - List the auditions the user has posted.
+- This section will have listings that will point to the manage listing page which is the the same as the details pages only with added managerial functionality.
 - Include details such as the audition title, date, time, location, and any additional information.
 - Provide options to manage the posted audition, edit details, or remove the posting.
 - If there are no posted auditions, display a message saying "You have not posted any auditions."
@@ -264,6 +268,7 @@ The User Dashboard should include the following sections:
 
 ##### Posted
 - List the playreads the user has posted or organized.
+- This section will have listings that will point to the manage listing page which is the the same as the details pages only with added managerial functionality.
 - Include details such as the playread title, date, time, location, and any additional information.
 - Provide options to manage the posted playread, edit details, or remove the posting.
 - If there are no posted playreads, display a message saying "You have not posted any playreads."
