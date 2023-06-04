@@ -34,11 +34,12 @@
       - [**My Playreads**](#my-playreads)
         - [Registered](#registered-1)
         - [Posted](#posted-2)
+      - [**Manage Listings pages.**](#manage-listings-pages)
       - [**Profile**](#profile)
         - [1. **Profile Type Selection:**](#1-profile-type-selection)
         - [2. **Shared Profile Sections:**](#2-shared-profile-sections)
         - [3. **Theater Group-Specific Sections:**](#3-theater-group-specific-sections)
-        - [4. **Direct Message/Chat:**](#4-direct-messagechat)
+        - [4. **Direct Message/Chat: Will not be part of the Beta release**](#4-direct-messagechat-will-not-be-part-of-the-beta-release)
     - [Scope of Global search](#scope-of-global-search)
   - [Shows App](#shows-app)
     - [Show Listings](#show-listings)
@@ -273,7 +274,7 @@ The User Dashboard should include the following sections:
 - Provide options to manage the posted playread, edit details, or remove the posting.
 - If there are no posted playreads, display a message saying "You have not posted any playreads."
 
-### Manage Listings pages.
+#### **Manage Listings pages.**
 
 When a user creates a listing, they might want to edit or delete the listing, or view how many people are interested in the listing.
 
