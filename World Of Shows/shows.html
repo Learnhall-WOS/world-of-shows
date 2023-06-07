@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="shows.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <div class="topnav">
+            <img src="./images/Company Logo.png" alt="company logo" class="logo">
+            <div class="search-container">
+                <form action="#">
+                  <input type="text" class="search-bar" placeholder="Search.." name="search">
+                  <input type="image" src="./images/akar-icons_search.png" alt="Search" height="32" width="32"class="search-icon">
+                </form>
+            </div>
+        </div>
+        <div class="navbar" >  
+            <div class="dropdown">
+                <a class="help">Help</a><svg class="arrow-down"width="10" height="6" xmlns="http://www.w3.org/2000/svg"><path stroke="#686868" stroke-width="1.5" fill="none" d="m1 1 4 4 4-4"/>
+                <div class="dropdown-content">
+                    <a href="">lorem</a>
+                    <a href="">Ipsum</a>
+                    <a href="">dolor</a>
+                    <a href="">amet</a>
+                </div>
+            </div>
+            <button class="sign-in">Sign In</button>     
+            <div class="dropdown">
+                <a class="switcher"><img src="./images/Switcher.png" alt="country switcher" width="65" height="40"><svg class="arrow-down"width="10" height="6" xmlns="http://www.w3.org/2000/svg"><path stroke="#686868" stroke-width="1.5" fill="none" d="m1 1 4 4 4-4"/>
+                </svg></a>
+                <div class="dropdown-content">
+                    <a href="">Germany</a>
+                    <a href="">Canada</a>
+                    <a href="">Nigeria</a>
+                </div>
+            </div>         
+        </div>
+    </nav>
+    <main>
+        <section class="navigate">
+            <button class="navigate-btn">Shows</button>
+            <button class="navigate-btn">Venues</button>
+            <button class="navigate-btn">Classes</button>
+            <button class="navigate-btn">Auditions</button>
+            <button class="navigate-btn">Play Reads</button>
+        </section>
+        <div class="bottom-border"></div>
+        <section class="info">
+            <h1>Shows</h1>
+            <div class="filter">
+                <div class="mini-container">
+                    <h3>Filter</h3>
+                    <input type="reset" class="reset" value="Reset">
+                </div>
+                <div class="dotted-border"></div>
+                <form action="" class="filter-form">
+                    <div class="switch">
+                        
+                        <label class="switch-inner">
+                            <input type="checkbox" name="slider">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="op-two"><br>
+                        <label for="email">Location</label><br><br>
+                        <select id="country" name="country">
+                            <option value="#"></option>
+                            <option value="#">Canada</option>
+                            <option value="#">UK</option>
+                            <option value="#">Australia</option>
+                        </select>
+                    </div>
+                    <div class="op-three"><br>
+                        <label for="showdate">Dates</label><br><br>
+                        <input type="date" id="availabledate" name="showdate">
+                    </div>
+                    <div class="op-four"><br>
+                        <label for="email">Genre</label><br><br>
+                        <select id="country" name="country">
+                            <option value="#"></option>
+                            <option value="#">Canada</option>
+                            <option value="#">UK</option>
+                            <option value="#">Australia</option>
+                        </select>
+                    </div>
+                    <div class="final-op"><br>
+                        <label for="vol">Prices</label><br><br>
+                        <input type="range" id="slider" name="vol" min="0" max="50">
+                    </div>
+                </form>
+            </div>
+        </section>
+        <section class="showsdisplay">
+            <div class="show-card">
+                <img src="./images/image 88.jpg" alt="Lion King image" class="image-88">
+                <p class="date">15 March - 15 April 2023</p>
+                <h1 class="title">The Lion King</h1>
+                <p class="location">Lyceum Theater, London</p>
+                <p class="description">A town hall different from bala blu, blue blu bulaba. 
+                    broom broom broom brooooooooom. 
+                    Bala blu blue blu bulaba. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem nemo temporibus.<button class="read-more">read more</button>
+                    <p class="hidden-paragraph">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis voluptas quidem cupiditate ex minima sint unde facilis modi saepe possimus. Velit, veniam rem ut a cumque alias ipsa magni libero.</p>
+                </p>
+                <p class="range">Ticket starts from</p>
+                <h3 class="price">&#36;10 - &#36;30</h3>
+                <button class="btn">#Musical</button>
+                <button class="btn drama">#Drama</button>
+                <button class="add">+ Add to List</button>
+                <button class="open">Open Show</button>
+            </div>
+            <div class="show-card">
+                <img src="./images/image 89.jpg" alt="Lion King image" class="image-88">
+                <p class="date">15 March - 15 April 2023</p>
+                <h1 class="title">The Phantom of The Opera</h1>
+                <p class="location">Minskoff Theatre, New York</p>
+                <p class="description">A town hall different from bala blu, blue blu bulaba. 
+                    broom broom broom brooooooooom. 
+                    Bala blu blue blu bulaba. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem nemo temporibus.<button class="read-more">read more</button>
+                    <p class="hidden-paragraph">Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                        Nobis voluptas quidem cupiditate ex minima sint unde facilis modi saepe possimus. 
+                        Velit, veniam rem ut a cumque alias ipsa magni libero.
+                    </p>
+                </p>
+                <p class="range">Ticket starts from</p>
+                <h3 class="price">&#36;10 - &#36;30</h3>
+                <button class="btn">#Musical</button>
+                <button class="btn drama">#Drama</button>
+                <button class="add">+ Add to List</button>
+                <button class="open">Open Show</button>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
